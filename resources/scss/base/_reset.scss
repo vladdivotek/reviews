@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: $text-color;
+    line-height: 1.4;
+    background-color: #f9f9f9;
+
+    &.blocked {
+        padding-right: 15px;
+        overflow: hidden;
+
+        @media screen and (max-width: 991px) {
+            padding-right: 0;
+        }
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+h1 {
+    font-size: 36px;
+
+    @media screen and (max-width: 991px) {
+        font-size: 30px;
+    }
+}
+
+p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: $general-color;
+
+    &:hover {
+        text-decoration: underline;
+        color: $general-color-hover;
+    }
+}

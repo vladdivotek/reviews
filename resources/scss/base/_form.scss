@@ -1,0 +1,77 @@
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0.75rem .45rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    appearance: none;
+    border-radius: 0.375rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+    &:disabled {
+        background-color: #e9ecef;
+        opacity: 1;
+    }
+}
+
+.form-control[type=file] {
+    overflow: hidden;
+}
+
+.form-control[type=file]:not(:disabled):not([readonly]) {
+    cursor: pointer;
+}
+
+.form-invalid {
+    display: none;
+    font-size: 14px;
+    color: #dc3545;
+}
+
+.was-validated .form-control:invalid,
+.was-validated .form-select:invalid,
+.was-validated .form-check-input:invalid {
+    border-color: #dc3545;
+
+    &::placeholder {
+        color: #dc3545;
+    }
+
+    &+ .form-invalid {
+        display: block;
+        margin-top: .25rem;
+    }
+
+    &+ .form-check-label {
+        color: #dc3545;
+    }
+}
+
+.was-validated .form-control:valid,
+.was-validated .form-select:valid,
+.was-validated .form-check-input:valid {
+    border-color: #148852;
+
+    &::placeholder {
+        color: #148852;
+    }
+
+    &+ .form-invalid {
+        display: none;
+        margin-top: .25rem;
+    }
+
+    &+ .form-check-label {
+        color: #148852;
+    }
+}
