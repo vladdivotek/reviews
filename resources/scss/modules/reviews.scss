@@ -35,6 +35,8 @@
         border-top: 1px solid #eee;
 
         .images {
+            display: flex;
+
             > a {
                 display: block;
                 width: 60px;

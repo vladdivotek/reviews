@@ -1,3 +1,9 @@
+// import { Fancybox } from "@fancyapps/ui/dist/fancybox/fancybox.esm.js";
+// import "@fancyapps/ui/dist/fancybox/fancybox.css";
+//
+// Fancybox.bind('[data-fancybox="gallery"]', {
+//     // Your custom options
+// });
 
 document.addEventListener("DOMContentLoaded", function() {
     const form = document.querySelector('.form').querySelector('form');
@@ -6,10 +12,10 @@ document.addEventListener("DOMContentLoaded", function() {
         event.preventDefault();
         if (validateForm()) {
             const formData = new FormData(form);
-            axios.post(form.getAttribute('action'), Object.fromEntries(formData))
+            axios.post(form.getAttribute('action'), formData)
                 .then(response => {
-                    const review = response.data;
-                    insertReview(review);
+                    const review = response.data.review;
+                    if (response.data.pagination) insertReview(review);
                     form.reset();
                 })
                 .catch(error => {
@@ -91,15 +97,20 @@ document.addEventListener("DOMContentLoaded", function() {
         const imagesDiv = document.createElement('div');
         imagesDiv.classList.add('images');
 
-        const imageLink = document.createElement('a');
-        imageLink.href = '';
-        imageLink.title = 'Photo to comment: ' + review.name;
-        const image = document.createElement('img');
-        image.src = ''; // Add image source here
-        image.alt = 'Photo to comment: ' + review.name;
+        if (review.images && review.images.length > 0) {
+            review.images.forEach((element) => {
+                const imageLink = document.createElement('a');
+                imageLink.href = '';
+                imageLink.title = 'Photo to comment: ' + review.name;
+                const image = document.createElement('img');
+                image.src = element;
+                image.alt = 'Photo to comment: ' + review.name;
 
-        imageLink.appendChild(image);
-        imagesDiv.appendChild(imageLink);
+                imageLink.appendChild(image);
+                imagesDiv.appendChild(imageLink);
+            });
+        }
+
         reviewCardFooter.appendChild(imagesDiv);
 
         reviewCard.appendChild(reviewCardHeader);
